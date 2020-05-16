@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+import Person from './Public/Person';
 import './App.css';
 
-class App extends Component {
-  render() {
+ const app= props  => {
+
+  const [personState,setPersonState] = useState({
+    persons:[
+      {name:'shubham',age:22},
+      {name:'Nency',age:15}
+    ]
+  });
+
+ const checkbtn=()=>{
+  
+    setPersonState({
+      persons:[
+        {name:'shubh',age:22},
+        {name:'Nena',age:14}
+      ]
+    });
+  };
+
+ 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Hello This is my first React App Yeyyyy.</h1>
+        <button onClick={checkbtn} >Switch names</button>
+        <Person name={personState.persons[0].name} age={personState.persons[0].age}>My Hobbies is - Coding </Person>
+        <Person name={personState.persons[1].name} age={personState.persons[1].age}/>
       </div>
     );
-  }
+    
+  
 }
 
-export default App;
+export default app;
